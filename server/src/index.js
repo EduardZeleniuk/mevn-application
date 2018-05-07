@@ -12,10 +12,11 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use(require('./routes/posts'), function (req, res, next) {
-  console.log('Request Type:', req.method);
-  // next();
-})
+var posts = require('./routes/posts')
+
+app.use('/posts',  posts)
+
+
 
 mongoose.connect(config.dbURL, config.dbOptions)
 
@@ -26,3 +27,5 @@ mongoose.connection
       () => console.log(`Server start on port ${config.port} ...`))
   })
   .on('error', error => console.warn(error))
+
+
