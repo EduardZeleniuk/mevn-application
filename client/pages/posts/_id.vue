@@ -12,7 +12,7 @@
         button( type="submit", name="editPost" )
           | edit post
     div
-      router-link( to="/posts" )
+      router-link( :to="{name:'posts'}" )
         | go to list of posts
 </template>
 
@@ -41,7 +41,7 @@
             title: this.post.title,
             description: this.post.description
           })
-          this.$router.push('/posts')
+          this.$router.push({name:'posts'})
         }
       }
     },

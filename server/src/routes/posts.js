@@ -42,6 +42,7 @@ router.get('/:id', (req, res) => {
   })
 })
 
+
 router.put('/:id', (req, res) => {
   Post.findById(req.params.id, 'title description', (err, post) => {
     if (err) {
@@ -64,7 +65,7 @@ router.put('/:id', (req, res) => {
   })
 })
 
-router.delete('/posts/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   Post.remove({ _id: req.params.id }, err => {
     if (err) {
       res.sendStatus(500)

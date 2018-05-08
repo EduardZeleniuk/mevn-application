@@ -13,7 +13,7 @@
             button.btn.btn-block.btn-primary( type="button", name="addPost", id="addPost", @click="addPost()" )
               | add new post
           section
-            nuxt-link.btn.btn-success.btn-block( to="/posts" )
+            nuxt-link.btn.btn-success.btn-block( :to="{name:'posts'}" )
               | go to posts page
 </template>
 
@@ -36,7 +36,7 @@
             title: this.post.title,
             description: this.post.description
           })
-          this.$router.push('/posts')
+          this.$router.push({name:'posts'})
         } else {
           alert('Empty fields!')
         }

@@ -9,27 +9,27 @@
 
         section.panel.panel-success( v-if="posts" )
           .panel-heading
-            | list of posts
+            | list of posts 
           table.table.table-striped
             tbody
               tr
                 th Title
                 th Description
                 th Action
-              tr( v-for="(post, index) in posts", :key="post.title" )
+              tr( v-for="(post, index) in posts", :key="post._id" )
                 td {{ post.title }}
                 td {{ post.description }}
                 td
-                router-link( to="{ name: 'EditPost', params: { id: post._id } } )
-                  | edit post
-                button.btn.btn-danger.btn-sm( type="button", @click="removePost(post._id)" )
-                  | delete
+                  router-link( :to="{ name:'posts-id', params: { id: post._id } }" class="btn btn-danger btn-sm" )
+                    | edit post
+                  button.btn.btn-danger.btn-sm( type="button", @click="removePost(post._id)" )
+                    | delete
 
-        section.panel.panel-danger( v-else-if="posts" )
+        section.panel.panel-danger( v-else )
           p
             | There are no posts ... Lets add one now!
           div
-            router-link( to="/posts/new" )
+            router-link( :to="{name:'posts-new'}" )
               | add new post
 </template>
 <script>
